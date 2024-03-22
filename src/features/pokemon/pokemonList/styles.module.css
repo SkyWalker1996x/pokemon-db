@@ -1,0 +1,17 @@
+.tableContainer {
+  max-width: 720px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+.table {
+  max-width: 720px;
+  min-width: 320px;
+}
+
+.row {
+  &:last-child td,
+  &:last-child th {
+    border: 0;
+  }
+}

@@ -1,30 +1,34 @@
-import TableRow from '@mui/material/TableRow';
 // types
 import { TPokemonListItem } from '../types.ts';
 // components
 import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import Tooltip from '@mui/material/Tooltip';
 // styles
 import classes from '../styles.module.css';
 
 type Props = {
   data: TPokemonListItem[];
+  toItemPage: (id: string) => void;
 };
 
 const TableBody = (props: Props) => {
-  const { data } = props;
+  const { data, toItemPage } = props;
 
   return (
     <>
       {data.map((row) => {
         return (
-          <TableRow className={classes.row} key={row.id}>
-            <TableCell component="th" scope="row">
-              <img width={50} src={row.imageSrc} alt="pokemon image" />
-            </TableCell>
-            <TableCell component="th" scope="row">
-              {row.name}
-            </TableCell>
-          </TableRow>
+          <Tooltip key={row.id} title={'Click for more information'} placement={'right-end'}>
+            <TableRow className={classes.row} onClick={() => toItemPage(row.id)}>
+              <TableCell component="th" scope="row" className={classes.imageCell} align="center">
+                <img width={50} src={row.imageSrc} alt="pokemon image" />
+              </TableCell>
+              <TableCell component="th" scope="row" align="center">
+                {row.name}
+              </TableCell>
+            </TableRow>
+          </Tooltip>
         );
       })}
     </>

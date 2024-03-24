@@ -8,12 +8,12 @@ import TableHead from './components/TableHead.tsx';
 import classes from './styles.module.css';
 
 const PokemonListPage = () => {
-  const { data } = usePokemonList();
+  const { data, toItemPage } = usePokemonList();
 
   return (
     <Table
       head={<TableHead />}
-      rows={<TableBody data={data} />}
+      rows={<TableBody data={data} toItemPage={toItemPage} />}
       tableClassName={classes.table}
       tableContainerClassName={classes.tableContainer}
     />

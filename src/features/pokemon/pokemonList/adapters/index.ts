@@ -1,5 +1,8 @@
-import { TGetPokemonListItemResponse } from 'api/pokeApi/types.ts';
-import { TPokemonListItem } from './types.ts';
+import {
+  TGetPokemonListItemResponse,
+  TGetPokemonListResponse,
+} from 'api/pokeApi/types/pokemonList';
+import { TPokemonListItem } from 'features/pokemon/pokemonList/types';
 
 const generateImageSrc = (id: string): string => {
   return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
@@ -20,8 +23,6 @@ export const pokemonListItemAdapter = (item: TGetPokemonListItemResponse): TPoke
   };
 };
 
-export const pokemonListAdapter = (
-  list: Array<TGetPokemonListItemResponse>,
-): Array<TPokemonListItem> => {
-  return list.map(pokemonListItemAdapter);
+export const pokemonListAdapter = (response: TGetPokemonListResponse): Array<TPokemonListItem> => {
+  return response.results.map(pokemonListItemAdapter);
 };

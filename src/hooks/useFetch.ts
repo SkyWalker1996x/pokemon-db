@@ -15,15 +15,19 @@ const useFetch = <T, U, K>(props: Props<T, U, K>) => {
   const [error, setError] = useState(null);
 
   const handleRequest = (params: U) => {
-    setIsLoading(false);
-    request(params)
-      .then((response) => {
-        const { data } = response;
-        setData(dataAdapter(data));
-      })
-      .catch((err) => {
-        setError(err);
-      });
+    setIsLoading(true);
+    setTimeout(() => {
+      request(params)
+        .then((response) => {
+          const { data } = response;
+          setData(dataAdapter(data));
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setError(err);
+          setIsLoading(false);
+        });
+    }, 1000)
   };
 
   return {

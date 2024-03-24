@@ -2,6 +2,7 @@
 import usePokemonItem from 'features/pokemon/pokemonItem/usePokemonItem.ts';
 // components
 import Header from 'components/header';
+import Loader from 'components/loader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -12,13 +13,14 @@ import Card from '@mui/material/Card';
 import styles from 'features/pokemon/pokemonItem/styles.module.css';
 
 const PokemonItemPage = () => {
-  const { data, toPreviousPage } = usePokemonItem();
+  const { data, toPreviousPage, isLoading } = usePokemonItem();
 
   return (
     <>
+      <Header />
+      {isLoading && <Loader />}
       {data !== null && (
         <>
-          <Header />
           <Card className={styles.card}>
             <CardMedia className={styles.image} image={data.imageSrc} title="pokemon view" />
             <CardContent>

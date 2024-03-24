@@ -1,0 +1,16 @@
+.header_wrapper {
+  margin-bottom: 16px;
+}
+
+.header {
+  background-color: antiquewhite;
+}
+
+.logo {
+  background-color: antiquewhite;
+}
+
+.image {
+  height: 50px;
+  margin-right: 16px;
+}

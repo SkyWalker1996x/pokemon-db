@@ -1,11 +1,11 @@
 // types
-import { TPokemonListItem } from '../types.ts';
+import { TPokemonListItem } from 'features/pokemon/pokemonList/types';
 // components
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Tooltip from '@mui/material/Tooltip';
 // styles
-import classes from '../styles.module.css';
+import classes from 'features/pokemon/pokemonList/styles.module.css';
 
 type Props = {
   data: TPokemonListItem[];

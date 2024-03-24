@@ -1,0 +1,12 @@
+.card {
+  margin: 0 auto;
+  max-width: 345px;
+}
+
+.name {
+  text-transform: capitalize;
+}
+
+.image {
+  height: 300px;
+}

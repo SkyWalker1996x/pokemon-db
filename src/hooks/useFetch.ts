@@ -1,24 +1,25 @@
 import { useState } from 'react';
 import { AxiosResponse } from 'axios';
 
-type Props<T> = {
-  request: () => Promise<AxiosResponse<T>>;
+type Props<T, U, K> = {
+  request: (params: U) => Promise<AxiosResponse<T>>;
   initialValue: unknown;
+  dataAdapter: (data: T) => K;
 };
 
-const useFetch = <T>(props: Props<T>) => {
-  const { request, initialValue } = props;
+const useFetch = <T, U, K>(props: Props<T, U, K>) => {
+  const { request, initialValue, dataAdapter } = props;
 
-  const [data, setData] = useState<T>((initialValue as T));
+  const [data, setData] = useState<K>(initialValue as K);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleRequest = () => {
+  const handleRequest = (params: U) => {
     setIsLoading(false);
-    request()
+    request(params)
       .then((response) => {
-        const {data,} = response;
-        setData(data);
+        const { data } = response;
+        setData(dataAdapter(data));
       })
       .catch((err) => {
         setError(err);

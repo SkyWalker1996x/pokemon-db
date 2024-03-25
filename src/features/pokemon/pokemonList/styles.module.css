@@ -1,0 +1,38 @@
+.tableContainer {
+  max-width: 720px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+.table {
+  max-width: 720px;
+  min-width: 320px;
+}
+
+.row {
+  text-transform: capitalize;
+  text-decoration: none;
+  &:last-child td,
+  &:last-child th {
+    border: 0;
+  }
+  &:hover {
+    cursor: pointer;
+    background: #1976d2;
+    transition: all 0.3s linear;
+  }
+}
+
+.image-cell {
+  max-width: 75px;
+}
+
+.link {
+  width: 100%;
+  color: inherit;
+  display: table-row;
+  vertical-align: middle;
+  outline: 0;
+  text-transform: capitalize;
+  text-decoration: none;
+}
